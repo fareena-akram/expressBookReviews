@@ -18,7 +18,7 @@ if (req.session.authorization) {
     // Verify JWT token
     jwt.verify(token, "access", (err, user) => {
         if (!err) {
-            req.username = username;
+            req.username = user.username;
             next(); // Proceed to the next middleware
         } else {
             return res.status(403).json({ message: "User not authenticated" });
